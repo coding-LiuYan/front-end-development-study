@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #result {
+        width: 200px;
+        height: 200px;
+        border: solid 1px red;
+      }
+    </style>
+  </head>
+  <body>
+    <button>click me</button>
+    <div id="result"></div>
+    <script>
+      const result = document.getElementById("result");
+      const btn = document.getElementsByTagName("button")[0];
+      btn.addEventListener("click", () => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://127.0.0.1:8000/server");
+        xhr.timeout = 2000;
+        xhr.ontimeout = () => {
+          alert("timeout");
+        };
+        xhr.onerror = () => {
+          alert("o o , your network have some problems");
+        };
+        xhr.send();
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
+            result.innerHTML = xhr.response;
+          }
+        };
+      });
+    </script>
+  </body>
+</html>

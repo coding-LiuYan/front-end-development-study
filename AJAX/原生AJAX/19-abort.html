@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #result {
+        width: 200px;
+        height: 200px;
+        border: solid 1px red;
+      }
+    </style>
+  </head>
+  <body>
+    <button>click me</button>
+    <button>cancel</button>
+
+    <script>
+      const btn = document.querySelectorAll("button");
+      let xhr = null;
+
+      btn[0].addEventListener("click", () => {
+        xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://127.0.0.1:8000/server");
+        xhr.send();
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
+            console.log(xhr.response);
+          }
+        };
+      });
+
+      btn[1].addEventListener("click", () => {
+        xhr.abort();
+      });
+    </script>
+  </body>
+</html>
