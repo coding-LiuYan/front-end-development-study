@@ -13,6 +13,12 @@ git学习拉取最新main分支
 远程分支pull
 
 
-分支保护测试直接push
-分支保护测试直接push v2.0
-分支保护测试直接push v3.0
+分支保护测试直接push  
+分支保护测试直接push v2.0  
+分支保护测试直接push v3.0  
+分支保护测试直接push v4.0  
+
+
+hello, world
+
+fuck world.
