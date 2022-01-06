@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+<!-- 常用按键修饰符
+        回车 enter
+        删除 delete（backspace and delete）
+        推出 esc
+        空格 space
+        换行 tab<keydown>
+        上   up
+        下   down
+        左   left
+        右   right
+
+        ctrl alt shift meta(win) 系统修饰键 keyup组合键  keydown正常使用
+
+        使用.keyCode  的编码也可以使用 .13(回车) 但是不推荐使用，keyCode已经从协议中删除，部分浏览器还在支持，但以后可能就不支持了
+      
+      
+-->
+
+
+
+    <div id="app">
+      <h2>welcome</h2>
+      <input type="text" placeholder="按下回车提示输入" @keydown.huiche="showInfo"/>
+    </div>
+    <script type="text/javascript">
+      Vue.config.productionTip = false;
+
+
+
+      //自己定义别名绑定      ↓这个是别名命名
+      Vue.config.keyCodes.huiche = 13;
+      //                            ↑这个是绑定的keyCode 13（回车）   也不太推荐同编码理由一样
+      var vm = new Vue({
+
+        el: "#app",
+        data: {},
+        methods: {
+          showInfo(e) {
+            console.log(e.target.value);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

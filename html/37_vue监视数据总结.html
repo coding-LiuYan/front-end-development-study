@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{student.name}}
+    <br><br>
+    {{student.age}}
+    <br><br>
+    <template v-if="student.sex">
+        {{student.sex}}
+        <br><br>
+    </template>
+    
+
+    <button @click="student.age++;">点我老一岁</button>
+    <button @click="addSex">加一个性别属性男</button>
+    <button @click="addFriend">首位添加一个friend</button>
+    <button @click="updateFriend">修改第一个朋友名字叫张三</button>
+    <button @click="addHobby">添加一个爱好</button>
+    <button @click="updateOnehobby">修改第一个爱好</button>
+    
+    <br><br>
+    <ul>
+        <li v-for="(h, index) in student.hobby" :key="index">
+            {{h}}
+        </li>
+    </ul>
+    <br><br>
+    <ul>
+        <li v-for="(f, index) in student.friend" :key="index">
+            {{f.name}}====={{f.age}}
+        </li>
+    </ul>
+
+</div>
+  <script>
+Vue.config.productionTip = false;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            student: {
+                name: 'tom',
+                age: 18,
+                hobby: ['抽烟', 'drink', 'cut'
+                ],
+                friend: [
+                    {name:'liu', age:'18'},
+                    {name:'qlf', age:'20'}
+                ]
+            }
+        },
+        methods: {
+            addSex() {
+                this.$set(this.student, 'sex', 'male');
+            },
+
+            addFriend() {
+                this.student.friend.unshift({name:'jiji', age:'23'});
+            },
+            updateFriend() {
+                this.student.friend[0].name = '张三';
+            },
+            addHobby() {
+                this.student.hobby.push('play vdieo game.');
+            },
+            updateOnehobby() {
+                this.student.hobby.splice(0, 1, 'drive');
+            }
+        }
+    })
+  </script>
+</body>
+</html>

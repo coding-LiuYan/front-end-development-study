@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{student.name}}--{{student.age}}--{{student.sex}}
+</div>
+  <script>
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            student: {
+                name: 'liu',
+                age: 15,
+            },
+        },
+        methods: {
+            
+        }
+    })
+  </script>
+</body>
+</html>
