@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>{{str}}</h3>
+    <h2 v-if="1 === 2">...</h2>
+    <h2 v-else-if="1 === 1">world</h2>
+</div>
+  <script>
+Vue.config.productionTip = false;
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            str: "hello"
+        },
+        methods: {
+            
+        }
+    })
+  </script>
+</body>
+</html>
